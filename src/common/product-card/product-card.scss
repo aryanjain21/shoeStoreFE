@@ -1,0 +1,96 @@
+@import '../../sass/all.scss';
+
+.product_card_container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    .product_wrapper {
+        width: 220px;
+        height: 300px;
+        margin: 0 12px 12px 0;
+        .product_image_section {
+            width: 100%;
+            height: 150px;
+            img {
+                width: 100%;
+                height: 150px;
+                object-fit: cover;
+                border-radius: 10px 10px 0 0;
+            }
+        }
+        .product_discription {
+            height: 150px;
+            position: relative;
+            border-radius: 0 0 10px 10px;
+            background-color: $color_off_white;
+            .product_details {
+                width: 92%;
+                position: absolute;
+                top: 10px;
+                padding: 0 8px;
+                .wishlist_area {
+                    width: 100%;
+                    height: 24px;
+                    text-align: right;
+                    margin-bottom: $half_spacing - 4;
+                    img {
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
+                .title {
+                    font-size: 16px;
+                    line-height: 14px;
+                    color: $color_black;
+                    margin-bottom: $half_spacing;
+                }
+                .price_section {
+                    display: flex;
+                    justify-content: space-between;
+                    .original_price {
+                        font-size: 14px;
+                        line-height: 14px;
+                        color: $color_black;
+                        text-align: right;
+                        margin-bottom: $half_spacing - 4;
+                        span {
+                            text-decoration: line-through;
+                        }
+                    }
+                    .discount_price {
+                        font-size: 14px;
+                        line-height: 14px;
+                        color: $color_black;
+                        text-align: right;
+                        margin-bottom: $half_spacing - 4;
+                        span {
+                            font-size: 10px;
+                        }
+                    }
+                }
+            }
+            .btn_area {
+                position: absolute;
+                bottom: 0;
+                Button {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 14px 56px;
+                    border-radius: 0 0 10px 10px;
+                    background-color: $color_light_gray_2;
+                    .buy_icon {
+                        width: 32px;
+                        height: 16px;
+                        margin-left: 8px;
+                        img {
+                            width: 100%;
+                            height: 16px;
+                            object-fit: cover;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

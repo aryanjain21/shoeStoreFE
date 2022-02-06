@@ -1,0 +1,69 @@
+@import '../../sass/all.scss';
+
+.cart_view_container {
+    .cart_details_section {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 16px;
+        border-radius: 10px;
+        border: 1px solid $color_border;
+        .product_details {
+            display: flex;
+            padding: 8px 8px 0;
+            border-bottom: 1px solid $color_light_gray_2;
+            .product_image {
+                width: 150px;
+                height: 100px;
+                margin-right: 16px;
+                img {
+                    width: 100%;
+                    height: 100px;
+                }
+            }
+            .details {
+                .title {
+                    font-size: 16px;
+                    line-height: 20px;
+                    color: $color_black;
+                    margin-bottom: 8px;
+                }
+                .size, .price {
+                    font-size: 14px;
+                    line-height: 14px;
+                    color: $color_black;
+                    margin-bottom: 8px;
+                }
+                @include breakpoint(sm) {
+                    max-width: 250px;
+                }
+            }
+            @include breakpoint(sm) {
+                width: 50%;
+                border-bottom: none;
+                padding-bottom: 8px;
+            }
+        }
+        .btn_section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .qty_btn_section, .remove_btn {
+                width: 50%;
+                text-align: center;
+            }
+            .remove_btn {
+                border-left: 1px solid $color_light_gray_2;
+                @include breakpoint(sm) {
+                    border-left: none;
+                }
+            }
+            @include breakpoint(sm) {
+                width: 50%;
+            }
+        }
+        @include breakpoint(sm) {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+}

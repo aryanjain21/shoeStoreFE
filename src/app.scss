@@ -1,0 +1,8 @@
+@import './sass/all.scss';
+
+.main_container {
+    @include breakpoint(sm) {
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+}

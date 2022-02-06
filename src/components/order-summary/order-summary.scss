@@ -1,0 +1,58 @@
+@import '../../sass/all.scss';
+
+.order_summary_container {
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid $color_light_gray_1;
+    background-color: $color_light_gray_1;
+    .bag_section {
+        .amount_section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            .lbl {
+                font-size: 14px;
+                line-height: 14px;
+                color: $color_light_gray;
+            }
+            .amount {
+                font-size: 16px;
+                line-height: 14px;
+                color: $color_black;
+            }
+            .discount {
+                font-size: 14px;
+                line-height: 14px;
+                color: $color_yellow;
+            }
+        }
+    }
+    .total_section {
+        margin-bottom: 24px;
+        border-top: 1px dashed $color_light_gray_2;
+        .order_total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 16px;
+            .lbl {
+                font-size: 16px;
+                line-height: 20px;
+                color: $color_black;
+            }
+            .total_amt {
+                font-size: 16px;
+                line-height: 20px;
+                color: $color_success;
+            }
+        }
+    }
+    .btn_area {
+        text-align: center;
+    }
+    @include breakpoint(sm) {
+        max-width: 350px;
+        padding: 16px;
+    }
+}

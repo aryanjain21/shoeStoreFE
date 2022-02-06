@@ -1,0 +1,23 @@
+@import '../../sass/all.scss';
+
+.qty_button_section {
+    .btn_area {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .minus_btn, .plus_btn {
+            cursor: pointer;
+            padding: 0 8px;
+            border: 1px solid $color_light_gray_1;
+        }
+        .minus_btn {
+            padding: 0 8px 4px;
+        }
+        .qty_count {
+            font-size: 12px;
+            line-height: 14px;
+            color: $color_black;
+            padding: 0 8px;
+        }
+    }
+}

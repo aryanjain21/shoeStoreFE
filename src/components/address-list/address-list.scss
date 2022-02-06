@@ -1,0 +1,40 @@
+@import '../../sass/all.scss';
+
+.address_list_container {
+  padding: 16px;
+  margin-bottom: $grid_spacing;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+  .top_section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $half_spacing;
+    .person_name, .mobile_number {
+      font-size: 14px;
+      line-height: 14px;
+      color: $color_black;
+    }
+  }
+  .address_section {
+    margin-bottom: $half_spacing;
+    .street, .area {
+      font-size: 16px;
+      line-height: 14px;
+      color: $color_black;
+    }
+    .street {
+      margin-bottom: 4px;
+    }
+  }
+  .btn_section {
+    display: flex;
+    align-items: center;
+    .edit_btn {
+      margin-right: 12px;
+    }
+  }
+  @include breakpoint(sm) {
+    width: 260px;
+    margin: 0 $half_spacing $grid_spacing 0;
+  }
+}

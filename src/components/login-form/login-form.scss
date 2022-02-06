@@ -1,0 +1,69 @@
+@import '../../sass/all.scss';
+
+.login_form_container{
+  padding: 0 32px;
+  .title {
+    font-size: 24px;
+    line-height: 24px;
+    color: $color_dark_gray;
+    margin-bottom: 24px;
+    @include font_roboto_bold;
+  }
+  .control_area {
+    margin-bottom: 16px;
+    .form_control {
+      margin-bottom: 24px;
+      .label {
+        font-size: 14px;
+        line-height: 18px;
+        margin-bottom: 8px;
+        color: $color_border;
+        @include font_roboto_medium;
+      } 
+      .form_input {
+        position: relative;
+        input {
+          outline: none;
+          width: 89%;
+          height: 36px;
+          padding: 0 16px;
+          border-radius: 8px;
+          color: $color_black;
+          border: 1px solid $color_border;
+          @include font_roboto_medium;
+        }
+        .icon_area {
+          width: 20px;
+          height: 20px;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          left: 0;
+          margin: 0 auto;
+          margin-top: 10px;
+          margin-right: 16px;
+          img {
+            width: 100%;
+            height: 20px;
+          }
+        }
+      }
+      .error {
+        font-size: 12px;
+        line-height: 14px;
+        color: $color_error;
+        margin: 8px 2px;
+        @include font_roboto_medium;
+      }
+    }
+    .btn_area {
+      text-align: center;
+    }
+  }
+  @include breakpoint(sm) {
+    width: 25%;
+    padding: 24px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+  }
+}

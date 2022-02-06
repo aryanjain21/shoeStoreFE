@@ -1,0 +1,21 @@
+@import '../../sass/all.scss';
+
+.cart_section {
+    padding: 0 8px;
+    .cart_view {
+        margin-bottom: 24px;
+        @include breakpoint(sm) {
+            width: 56%;
+        }
+    }
+    .order_summary {
+        @include breakpoint(sm) {
+            width: 35%;
+        }
+    }
+    @include breakpoint(sm) {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 24px;
+    }
+}

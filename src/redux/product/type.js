@@ -1,0 +1,4 @@
+export const TYPE = {
+    PRODUCT_LIST: 'PRODUCT_LIST',
+    SET_LOADER: 'SET_LOADER'
+}

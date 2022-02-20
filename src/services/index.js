@@ -59,3 +59,7 @@ export const updateQty = (data) => {
 export const moveToWishlist = (data) => {
     return axios.post(`${process.env.REACT_APP_BACKEND}api/move-to-wishlist`, data);
 }
+
+export const addToWishlist = (data) => {
+    return axios.post(`${process.env.REACT_APP_BACKEND}api/add-to-wishlist`, data);
+}

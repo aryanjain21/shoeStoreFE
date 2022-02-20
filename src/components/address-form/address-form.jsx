@@ -6,16 +6,16 @@ import { addAddress, updateAddress } from '../../services';
 
 const AddressForm = (props) => {
 
-    const { editAddress=false, setEditAddress, editData, fetchAddressList, setAddressModal } = props;
+    const { editAddress=false, setEditAddress, editData,setEditData, fetchAddressList, setAddressModal } = props;
 
     const InitialValues = {
-        name: editData.line1 ? editData.line1 : '',
+        name: editData.name ? editData.name : '',
         mobileNumber: editData.mobileNumber ? editData.mobileNumber : '',
-        street: editData.line1 ? editData.line1 : '',
+        street: editData.street ? editData.street : '',
         landmark: editData.landmark ? editData.landmark : '',
         city: editData.city ? editData.city : '',
         state: editData.state ? editData.state : '',
-        pincode: editData.postal_code ? editData.postal_code : '',
+        pincode: editData.pincode ? editData.pincode : '',
         country: editData.country ? editData.country : ''
     }
 
@@ -69,21 +69,28 @@ const AddressForm = (props) => {
                 onSubmit={(values) => {
                     if (editAddress) {
                         let editAddressData = values;
-                        editAddressData.address_id = editData._id;
+                        editAddressData.addressId = editData._id;
                         updateAddress(editAddressData).then(resp => {
                             console.log('update address', resp)
-                            fetchAddressList();
+                            if(resp.data.status === 200) {
+                                fetchAddressList();
+                            }
                         }).catch(error => {
                             console.log('Update Address error', error)
                         }).finally(() => {
                             setAddressModal(false);
-                            setEditAddress(false)
+                            setEditAddress(false);
+                            setEditData({});
                         })
                     } else {
                         addAddress(values).then(resp => {
                             console.log('add address', resp)
+                            fetchAddressList();
                         }).catch(error => {
                             console.log('Add Address error', error)
+                        }).finally(() => {
+                            setAddressModal(false);
+                            setEditAddress(false)
                         })
                     }
                 }}>

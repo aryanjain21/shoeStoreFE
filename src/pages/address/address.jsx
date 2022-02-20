@@ -3,7 +3,7 @@ import './address.scss';
 import AddressForm from '../../components/address-form/address-form';
 import AddressList from '../../components/address-list/address-list';
 import Modal from '../../common/modal/modal';
-import { connect, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import { fetchAddressList } from '../../redux/address/action';
 
 const Address = (props) => {
@@ -15,7 +15,9 @@ const Address = (props) => {
     const [editData, setEditData] = useState({});
 
     const openAddressModal = () => {
-        setAddressModal((prevState) => !prevState)
+        setAddressModal((prevState) => !prevState);
+        setEditAddress(false);
+        setEditData({});
     }
 
     const handleEdit = (data) => {
@@ -23,10 +25,6 @@ const Address = (props) => {
         setAddressModal(true);
         setEditAddress(true);
         setEditData(data);
-    }
-
-    const handleRemove = () => {
-
     }
 
     useEffect(() => {
@@ -41,11 +39,11 @@ const Address = (props) => {
                     <div className='add_link' onClick={openAddressModal}>Add Address</div>
                 </div>
                 <div className='saved_address'>
-                    <AddressList {...props} handleRemove={handleRemove} handleEdit={handleEdit} />
+                    <AddressList {...props} handleEdit={handleEdit} />
                 </div>
             </div>
             {addressModal && <Modal title={editAddress ? 'Update Address' : 'Add Address'} showModal={addressModal} closeHandler={openAddressModal}>
-                <AddressForm editAddress={editAddress} setEditAddress={setEditAddress} editData={editData} fetchAddressList={fetchAddressList} setAddressModal={setAddressModal} />
+                <AddressForm editAddress={editAddress} setEditAddress={setEditAddress} editData={editData} setEditData={setEditData} fetchAddressList={fetchAddressList} setAddressModal={setAddressModal} />
             </Modal>}
         </>
     );

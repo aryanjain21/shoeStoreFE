@@ -55,3 +55,7 @@ export const emptyCart = (data) => {
 export const updateQty = (data) => {
     return axios.post(`${process.env.REACT_APP_BACKEND}api/update-qty`, data);
 }
+
+export const moveToWishlist = (data) => {
+    return axios.post(`${process.env.REACT_APP_BACKEND}api/move-to-wishlist`, data);
+}

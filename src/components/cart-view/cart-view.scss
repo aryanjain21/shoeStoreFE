@@ -12,7 +12,7 @@
             padding: 8px 8px 0;
             border-bottom: 1px solid $color_light_gray_2;
             .product_image {
-                width: 150px;
+                width: 200px;
                 height: 100px;
                 margin-right: 16px;
                 img {
@@ -27,11 +27,16 @@
                     color: $color_black;
                     margin-bottom: 8px;
                 }
-                .size, .price {
+                .size, .price, .original_price {
                     font-size: 14px;
                     line-height: 14px;
                     color: $color_black;
                     margin-bottom: 8px;
+                }
+                .original_price {
+                    span {
+                        text-decoration: line-through;
+                    }
                 }
                 @include breakpoint(sm) {
                     max-width: 250px;
@@ -51,10 +56,55 @@
                 width: 50%;
                 text-align: center;
             }
-            .remove_btn {
+            .qty_btn_section {
+                @include breakpoint(sm) {
+                    width: 33%;
+                }
+            }
+            .mobile_btn {
+                width: 50%;
+                display: flex;
                 border-left: 1px solid $color_light_gray_2;
+                .delete {
+                    width: 50%;
+                    cursor: pointer;
+                    text-align: center;
+                }
+                .wishlist {
+                    width: 50%;
+                    cursor: pointer;
+                    text-align: center;
+                    border-left: 1px solid $color_light_gray_2;
+                }
                 @include breakpoint(sm) {
                     border-left: none;
+                    display: none;
+                }
+            }
+            .desktop_btn {
+                display: none;
+                @include breakpoint(sm) {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    font-size: 14px;
+                    line-height: 20px;
+                    padding-right: 8px;
+                    .remove {
+                        cursor: pointer;
+                        text-decoration: underline;
+                        margin-bottom: 4px;
+                        &:hover {
+                            color: $color_yellow;
+                        }
+                    }
+                    .move_wishlist {
+                        cursor: pointer;
+                        text-decoration: underline;
+                        &:hover {
+                            color: $color_yellow;
+                        }
+                    }
                 }
             }
             @include breakpoint(sm) {

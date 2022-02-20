@@ -1,18 +1,33 @@
 import './order-summary.scss';
 import Button from '../../common/button/button';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const OrderSummary = (props) => {
+
+    const {amountData} = props;
+    const [bagTotal, setBagTotal] = useState(0);
+
+    useEffect(() => {
+        let totalAfterDiscount = 0;
+        if (amountData && amountData.products.length > 0) {
+            amountData.products.forEach(element => {
+                totalAfterDiscount += ((element._id.price - ((element._id.price * element._id.discount)/100)) * element.qty);
+                setBagTotal(totalAfterDiscount.toFixed(2));
+            });
+        }
+    }, [amountData])
 
     return (
         <div className='order_summary_container'>
             <div className='bag_section'>
                 <div className='amount_section'>
                     <div className='lbl'>Bag Total</div>
-                    <div className='amount'>Rs. 5250</div>
+                    <div className='amount'>Rs. {amountData.cartValue}</div>
                 </div>
                 <div className='amount_section'>
                     <div className='lbl'>Bag Discount</div>
-                    <div className='discount'>- Rs. 250</div>
+                    <div className='discount'>- Rs. {(amountData.cartValue - bagTotal)}</div>
                 </div>
                 <div className='amount_section'>
                     <div className='lbl'>Delivery</div>
@@ -22,7 +37,7 @@ const OrderSummary = (props) => {
             <div className='total_section'>
                 <div className='order_total'>
                     <div className='lbl'>Order Total</div>
-                    <div className='total_amt'>Rs. 5000</div>
+                    <div className='total_amt'>Rs. {bagTotal}</div>
                 </div>
             </div>
             <div className='btn_area'>

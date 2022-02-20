@@ -40,7 +40,7 @@ const ProductInfo = (props) => {
                 <ProductDetails productInfo={productInfo} />
             </div>
             <div className='product_section'>
-                <ProductCard products={productData?.product?.products?.slice(0, 10)} />
+                <ProductCard products={productData?.product?.products?.slice(0, 10)} isCarousel />
             </div>
         </div>
     );

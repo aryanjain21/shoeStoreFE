@@ -23,11 +23,11 @@ const OrderSummary = (props) => {
             <div className='bag_section'>
                 <div className='amount_section'>
                     <div className='lbl'>Bag Total</div>
-                    <div className='amount'>Rs. {amountData.cartValue}</div>
+                    <div className='amount'>Rs. {amountData?.cartValue || 0}</div>
                 </div>
                 <div className='amount_section'>
                     <div className='lbl'>Bag Discount</div>
-                    <div className='discount'>- Rs. {(amountData.cartValue - bagTotal)}</div>
+                    <div className='discount'>- Rs. {(amountData?.cartValue - bagTotal) || 0}</div>
                 </div>
                 <div className='amount_section'>
                     <div className='lbl'>Delivery</div>

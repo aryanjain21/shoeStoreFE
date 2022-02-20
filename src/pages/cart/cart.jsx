@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import CartView from '../../components/cart-view/cart-view';
 import OrderSummary from '../../components/order-summary/order-summary';
 import { fetchCartList } from '../../redux/cart/action';
-import { removeFromCart, moveToWishlist } from '../../services';
+import { removeFromCart, moveToWishlist, emptyCart } from '../../services';
 
 const Cart = (props) => {
 
@@ -26,7 +26,7 @@ const Cart = (props) => {
     }
 
     const moveItemToWishlist = (productId) => {
-        moveToWishlist({productId : productId}).then(resp => {
+        moveToWishlist({ productId: productId }).then(resp => {
             if (resp.data.status === 200) {
                 fetchCartList();
             }
@@ -35,9 +35,22 @@ const Cart = (props) => {
         });
     }
 
+    const handleEmptyCart = () => {
+        emptyCart().then(resp => {
+            if (resp.data.status === 200) {
+                fetchCartList();
+            }
+        }).catch(error => {
+            console.log('handleEmptyCart error>>>', error.response)
+        });
+    }
+
     return (
         <div className='cart_section'>
             <div className='cart_view'>
+                {(cart.length > 0) && <div className='link'>
+                    <a href='javascrip:void(0);' onClick={handleEmptyCart}>Empty Cart</a>
+                </div>}
                 <CartView cartData={cart} removeItem={removeItem} moveItemToWishlist={moveItemToWishlist} />
             </div>
             <div className='order_summary'>

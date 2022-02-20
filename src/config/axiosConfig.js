@@ -1,10 +1,12 @@
 import axios from 'axios';
+import store from '../redux/store.js';
+import {signout} from '../redux/user/user-action.js';
 
 (function (axios) {
     axios.interceptors.request.use(function (req) {
         if (req.url.includes('api')) {
             let user = JSON.parse(localStorage.getItem('setUser')) || {};
-            req.headers.authorization = user.token;
+            req.headers.token = user.token;
         }
         return req;
     }, function (error) {
@@ -16,9 +18,7 @@ import axios from 'axios';
         if (error.response) {
             if (error.response.status === 401) {
                 localStorage.removeItem('setUser');
-                if(typeof window !== 'undefined') {
-                    window.location.href = '/'
-                }
+                store.dispatch(signout());
                 return Promise.reject(error);
             } else return Promise.reject(error);
         } else if (error.request) {

@@ -15,6 +15,12 @@ export const setLoader = (loaderState) => {
     }
 }
 
+export const signout = () => {
+    return {
+        type: TYPE.LOG_OUT
+    }
+}
+
 export const fetchUserDetails = (data) => {
     return (dispatch) => {
         dispatch(setLoader(true));
@@ -24,7 +30,7 @@ export const fetchUserDetails = (data) => {
             if ('undefined' !== typeof window) {
                 window.location.href = '/home';
             }
-            localStorage.setItem('setUser', JSON.stringify({ fullName: user.fullName, email: user.email, token: user.accessToken, id: user._id }));
+            localStorage.setItem('setUser', JSON.stringify({ fullName: user.fullName, email: user.email, token: user.token, id: user._id }));
         }).catch(error => {
             console.log('fetchUserDetails error>>>', error.response);
         }).finally(() => dispatch(setLoader(false)));

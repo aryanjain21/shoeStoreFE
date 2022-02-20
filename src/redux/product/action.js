@@ -17,6 +17,7 @@ export const setLoader = (loaderState) => {
 
 export const fetchProductList = (data) => {
     return (dispatch) => {
+        console.log('wesdfg123456')
         dispatch(setLoader(true));
         getAllProduct(data).then(resp => {
             let product = resp.data.data;

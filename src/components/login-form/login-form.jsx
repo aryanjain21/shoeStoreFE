@@ -38,7 +38,7 @@ const LoginForm = (props) => {
                 validationSchema={ValidationSchema}
                 onSubmit={(values) => {
                     console.log('Login form', values)
-                    let resp = fetchUserDetails(values);
+                    fetchUserDetails(values);
                 }}>
                 <Form className='control_area'>
                     <div className='form_control'>

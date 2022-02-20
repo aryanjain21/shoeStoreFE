@@ -13,6 +13,13 @@ const UserReducer = (state = initialState, action) => {
                 ...state,
                 loader: action.payload
             }
+        case TYPE.LOG_OUT:
+            localStorage.removeItem('setUser');
+            return {
+                loader: false,
+                user: {},
+                error: ''
+            }
         default:
             return state;
     }

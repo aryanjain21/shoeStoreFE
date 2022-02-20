@@ -11,6 +11,8 @@ import Address from './pages/address/address';
 import store from './redux/store.js';
 import PrivateRoute from './privateRoute';
 import Cart from './pages/cart/cart';
+import Product from './pages/product/product';
+import ProductInfo from './pages/product-info/product-info';
 import { signin } from './redux/user/user-action';
 
 let userInfo = JSON.parse(localStorage.getItem('setUser'));
@@ -29,7 +31,9 @@ function App() {
             <Route exact path='home' element={<Home />} />
             <Route exact path='login' element={<Login />} />
             <Route exact path='signup' element={<SignUp />} />
-            <Route exact path='address' element={
+            <Route exact path='/product' element={<Product />} />
+            <Route exact path='/buy/:productId' element={<ProductInfo />} />
+            <Route exact path='/address' element={
               <PrivateRoute>
                 <Address />
               </PrivateRoute>

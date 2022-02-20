@@ -2,19 +2,21 @@ import '../login-form/login-form.scss';
 import * as yup from 'yup';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import Button from '../../common/button/button';
+import { signUp } from '../../services';
 
 const SignUpForm = () => {
 
     const InitialValues = {
+        fullName: '',
         email: '',
         password: ''
     }
 
     const ValidationSchema = yup.object({
-        name: yup
+        fullName: yup
             .string()
             .trim()
-            .required('Please enter name'),
+            .required('Please enter fullName'),
         email: yup
             .string()
             .trim()
@@ -40,14 +42,19 @@ const SignUpForm = () => {
                 validationSchema={ValidationSchema}
                 onSubmit={(values) => {
                     console.log('Sign up form', values)
+                    signUp(values).then(resp => {
+                        console.log(resp.data)
+                    }).catch((error) => {
+                        console.log(error.response.data.message);
+                    })
                 }}>
                 <Form className='control_area'>
                     <div className='form_control'>
                         <div className='label'>Name</div>
                         <div className='form_input'>
-                            <Field type="text" name='name' placeholder='Name' />
+                            <Field type="text" name='fullName' placeholder='Name' />
                         </div>
-                        <ErrorMessage className='error' name="name" component="div" />
+                        <ErrorMessage className='error' name="fullName" component="div" />
                     </div>
                     <div className='form_control'>
                         <div className='label'>Email Id</div>

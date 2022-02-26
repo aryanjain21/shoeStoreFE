@@ -16,7 +16,7 @@ const SignUpForm = () => {
         fullName: yup
             .string()
             .trim()
-            .required('Please enter fullName'),
+            .required('Please enter name'),
         email: yup
             .string()
             .trim()
@@ -78,8 +78,8 @@ const SignUpForm = () => {
                     </div>
                 </Form>
             </Formik>
-            <div className='link'>
-                Already have account? <Button type={'link'} redirectionLink={'/login'}>login</Button>
+            <div className='account_link'>
+                Already have account? <Button type={'link'} redirectionLink={'/login'}>Login</Button>
             </div>
         </div>
     );

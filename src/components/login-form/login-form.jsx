@@ -63,8 +63,9 @@ const LoginForm = (props) => {
                     </div>
                 </Form>
             </Formik>
-            <div>
-                <Button type={'link'}>Create your Account</Button>
+            <div className='account_link'>
+                <span>New to Nice Pair? </span>
+                <Button type={'link'} redirectionLink={'/signup'}>Create Your Account</Button>
             </div>
         </div>
     );

@@ -41,11 +41,10 @@ const SignUpForm = () => {
                 initialValues={InitialValues}
                 validationSchema={ValidationSchema}
                 onSubmit={(values) => {
-                    console.log('Sign up form', values)
                     signUp(values).then(resp => {
                         console.log(resp.data)
                     }).catch((error) => {
-                        console.log(error.response.data.message);
+                        console.error(error.response.data.message);
                     })
                 }}>
                 <Form className='control_area'>

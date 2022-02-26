@@ -24,7 +24,7 @@ const QtyButton = (props) => {
                 fetchCartList();
             }
         }).catch(error => {
-            console.log('updateQty error>>>', error.response)
+            console.error('updateQty error>>>', error.response)
         });
     }
 

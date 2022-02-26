@@ -21,7 +21,6 @@ const Address = (props) => {
     }
 
     const handleEdit = (data) => {
-        console.log('handleEdit', data)
         setAddressModal(true);
         setEditAddress(true);
         setEditData(data);

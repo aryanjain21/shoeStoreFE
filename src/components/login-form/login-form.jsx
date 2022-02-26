@@ -37,7 +37,6 @@ const LoginForm = (props) => {
                 initialValues={InitialValues}
                 validationSchema={ValidationSchema}
                 onSubmit={(values) => {
-                    console.log('Login form', values)
                     fetchUserDetails(values);
                 }}>
                 <Form className='control_area'>

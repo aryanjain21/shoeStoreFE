@@ -21,7 +21,7 @@ const Cart = (props) => {
                 fetchCartList();
             }
         }).catch(error => {
-            console.log('removeItem error>>>', error.response)
+            console.error('removeItem error>>>', error.response)
         });
     }
 
@@ -31,7 +31,7 @@ const Cart = (props) => {
                 fetchCartList();
             }
         }).catch(error => {
-            console.log('moveItemToWishlist error>>>', error.response)
+            console.error('moveItemToWishlist error>>>', error.response)
         });
     }
 
@@ -41,7 +41,7 @@ const Cart = (props) => {
                 fetchCartList();
             }
         }).catch(error => {
-            console.log('handleEmptyCart error>>>', error.response)
+            console.error('handleEmptyCart error>>>', error.response)
         });
     }
 
@@ -54,7 +54,7 @@ const Cart = (props) => {
                 <CartView cartData={cart} removeItem={removeItem} moveItemToWishlist={moveItemToWishlist} />
             </div>
             <div className='order_summary'>
-                <OrderSummary amountData={cartData?.cartList?.products?.length > 0 && cartData.cartList} />
+                <OrderSummary amountData={cartData?.cartList?.products?.length > 0 ? cartData.cartList : {}} />
             </div>
         </div>
     );

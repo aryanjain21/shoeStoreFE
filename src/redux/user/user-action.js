@@ -32,7 +32,7 @@ export const fetchUserDetails = (data) => {
             }
             localStorage.setItem('setUser', JSON.stringify({ fullName: user.fullName, email: user.email, token: user.token, id: user._id }));
         }).catch(error => {
-            console.log('fetchUserDetails error>>>', error.response);
+            console.error('fetchUserDetails error>>>', error.response);
         }).finally(() => dispatch(setLoader(false)));
     }
 }

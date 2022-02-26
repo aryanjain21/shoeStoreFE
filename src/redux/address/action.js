@@ -22,7 +22,7 @@ export const fetchAddressList = (data) => {
             let list = resp.data.data;
             dispatch(addressList(list))
         }).catch(error => {
-            console.log('fetchAddressList error>>>', error.response);
+            console.error('fetchAddressList error>>>', error.response);
         }).finally(() => dispatch(setLoader(false)));
     }
 }

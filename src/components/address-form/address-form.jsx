@@ -71,12 +71,11 @@ const AddressForm = (props) => {
                         let editAddressData = values;
                         editAddressData.addressId = editData._id;
                         updateAddress(editAddressData).then(resp => {
-                            console.log('update address', resp)
                             if(resp.data.status === 200) {
                                 fetchAddressList();
                             }
                         }).catch(error => {
-                            console.log('Update Address error', error)
+                            console.error('Update Address error', error)
                         }).finally(() => {
                             setAddressModal(false);
                             setEditAddress(false);
@@ -84,10 +83,9 @@ const AddressForm = (props) => {
                         })
                     } else {
                         addAddress(values).then(resp => {
-                            console.log('add address', resp)
                             fetchAddressList();
                         }).catch(error => {
-                            console.log('Add Address error', error)
+                            console.error('Add Address error', error)
                         }).finally(() => {
                             setAddressModal(false);
                             setEditAddress(false)

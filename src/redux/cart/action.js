@@ -22,7 +22,7 @@ export const fetchCartList = () => {
             let list = resp.data.data;
             dispatch(cartList(list))
         }).catch(error => {
-            console.log('fetchCartList error>>>', error.response);
+            console.error('fetchCartList error>>>', error.response);
         }).finally(() => dispatch(setLoader(false)));
     }
 }
@@ -32,10 +32,9 @@ export const updateProductQty = (data) => {
         dispatch(setLoader(true));
         updateQty(data).then(resp => {
             if(resp.data.status === 200) {
-                console.log(resp.data.data);
             }
         }).catch(error => {
-            console.log('updateProductQty error>>>', error.response);
+            console.error('updateProductQty error>>>', error.response);
         }).finally(() => dispatch(setLoader(false)));
     }
 }

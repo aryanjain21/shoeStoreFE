@@ -4,7 +4,7 @@ import './toast.scss';
 const Toast = (props) => {
 
     const { msg } = props;
-console.log(msg)
+
     const [showToast, setShowToast] = useState(false);
 
     useEffect(() => {

@@ -13,6 +13,7 @@ import PrivateRoute from './privateRoute';
 import Cart from './pages/cart/cart';
 import Product from './pages/product/product';
 import ProductInfo from './pages/product-info/product-info';
+import Wishlist from './pages/wishlist/wishlist';
 import { signin } from './redux/user/user-action';
 
 let userInfo = JSON.parse(localStorage.getItem('setUser'));
@@ -41,6 +42,11 @@ function App() {
             <Route exact path='cart' element={
               <PrivateRoute>
                 <Cart />
+              </PrivateRoute>
+            } />
+            <Route exact path='wishlist' element={
+              <PrivateRoute>
+                <Wishlist />
               </PrivateRoute>
             } />
             <Route exact path='*' element={<Fallback />} />

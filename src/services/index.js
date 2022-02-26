@@ -63,3 +63,15 @@ export const moveToWishlist = (data) => {
 export const addToWishlist = (data) => {
     return axios.post(`${process.env.REACT_APP_BACKEND}api/add-to-wishlist`, data);
 }
+
+export const getWishlist = () => {
+    return axios.get(`${process.env.REACT_APP_BACKEND}api/get-wishlist`);
+}
+
+export const removeFromWishlist = (data) => {
+    return axios.post(`${process.env.REACT_APP_BACKEND}api/remove-from-wishlist`, data);
+}
+
+export const moveToCart = (data) => {
+    return axios.post(`${process.env.REACT_APP_BACKEND}api/move-to-cart`, data);
+}

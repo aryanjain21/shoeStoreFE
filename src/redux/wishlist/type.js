@@ -1,0 +1,5 @@
+export const TYPE = {
+    WISHLIST: 'WISHLIST',
+    SET_LOADER: 'SET_LOADER',
+    UPDATE_LENGTH: 'UPDATE_LENGTH'
+}

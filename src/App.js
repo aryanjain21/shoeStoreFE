@@ -17,6 +17,8 @@ import Wishlist from './pages/wishlist/wishlist';
 import ChangePassword from './pages/change-password/change-password';
 import Footer from './components/footer/footer';
 import { signin } from './redux/user/user-action';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 let userInfo = JSON.parse(localStorage.getItem('setUser'));
 if (userInfo && userInfo.token) {
@@ -30,6 +32,7 @@ function App() {
         <div className='header'>
         <Header />
         </div>
+        <ToastContainer />
         <div className='sub_container'>
           <Routes>
             <Route exact path='/' element={<Navigate to='/home' />} />

@@ -9,6 +9,7 @@ import Logo from '../../assets/images/logo.jpg';
 import { fetchCartList } from '../../redux/cart/action';
 import { fetchWishlist } from '../../redux/wishlist/action';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 const Header = (props) => {
 
@@ -29,6 +30,15 @@ const Header = (props) => {
         } else {
             setShowMenu((prevState) => !prevState);
         }
+    }
+
+    const handleSignOut = () => {
+        toast.success('Sign out sucessfully.')
+        localStorage.removeItem('setUser');
+        setTimeout(() => {
+            navigate('/home');
+            window?.location?.reload();
+        }, 100);
     }
 
     return (
@@ -61,7 +71,7 @@ const Header = (props) => {
                         <div className='options'>Edit Profile</div>
                         <div className='options'>My Orders</div>
                         <div className='options' onClick={() => navigate('/change-password')}>ChangePassword</div>
-                        <div className='options'>Sign Out</div>
+                        <div className='options' onClick={handleSignOut}>Sign Out</div>
                     </div>}
                 </div>
             </div>

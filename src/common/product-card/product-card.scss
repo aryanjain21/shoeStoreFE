@@ -4,13 +4,18 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    li[class*="slide"] {
+        min-width: auto;
+    }
     .product_wrapper {
         width: 220px;
-        height: 300px;
+        height: 340px;
         margin: 0 12px 12px 0;
         .product_image_section {
             width: 100%;
             height: 150px;
+            cursor: pointer;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
             img {
                 width: 100%;
                 height: 150px;
@@ -22,75 +27,84 @@
             height: 150px;
             position: relative;
             border-radius: 0 0 10px 10px;
-            background-color: $color_off_white;
+            background-color: $color_white;
+            box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+            .wished_icon {
+                cursor: pointer;
+                position: absolute;
+                top: 0;
+                right: 8px;
+                width: 24px;
+                height: 24px;
+                z-index: 9;
+                img {
+                    width: 100%;
+                    height: 24px;
+                }
+            }
             .product_details {
                 width: 92%;
                 position: absolute;
                 top: 10px;
                 padding: 0 8px;
-                .wishlist_area {
-                    width: 100%;
-                    height: 24px;
-                    text-align: right;
-                    margin-bottom: $half_spacing - 4;
-                    img {
-                        width: 24px;
-                        height: 24px;
-                    }
+                .brand {
+                    font-size: 16px;
+                    line-height: 20px;
+                    text-align: center;
+                    color: $color_black;
+                    margin-bottom: $half_spacing;
                 }
                 .title {
+                    cursor: pointer;
                     font-size: 16px;
-                    line-height: 14px;
+                    line-height: 20px;
+                    text-align: center;
                     color: $color_black;
                     margin-bottom: $half_spacing;
                 }
                 .price_section {
-                    display: flex;
-                    justify-content: space-between;
-                    .original_price {
-                        font-size: 14px;
-                        line-height: 14px;
+                    text-align: center;
+                    .discount_price {
+                        font-size: 16px;
+                        line-height: 18px;
                         color: $color_black;
-                        text-align: right;
                         margin-bottom: $half_spacing - 4;
-                        span {
+                        .strike_through {
                             text-decoration: line-through;
                         }
-                    }
-                    .discount_price {
-                        font-size: 14px;
-                        line-height: 14px;
-                        color: $color_black;
-                        text-align: right;
-                        margin-bottom: $half_spacing - 4;
-                        span {
-                            font-size: 10px;
+                        .discount {
+                            font-size: 14px;
+                            color: $color_error;
                         }
+                    }
+                    .mrp_price {
+                        color: $color_success;
                     }
                 }
             }
             .btn_area {
                 position: absolute;
-                bottom: 0;
+                bottom: -25px;
                 Button {
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    padding: 14px 56px;
+                    width: 220px;
+                    padding: 14px 32px;
                     border-radius: 0 0 10px 10px;
                     background-color: $color_light_gray_2;
-                    .buy_icon {
-                        width: 32px;
-                        height: 16px;
-                        margin-left: 8px;
-                        img {
-                            width: 100%;
-                            height: 16px;
-                            object-fit: cover;
-                        }
-                    }
                 }
             }
+        }
+        &.product_without_btn {
+            .product_discription {
+                height: 140px;
+            }
+        }
+    }
+    &.wishlist_data {
+        justify-content: center;
+        padding: 0 32px;
+        @include breakpoint(md) {
+            justify-content: flex-start;
+            padding: 0 16px;
         }
     }
 }

@@ -1,0 +1,60 @@
+@import '../../sass/all.scss';
+
+.footer_container {
+    width: 100%;
+    background-color: #232F3E;
+    .top_scroll {
+        cursor: pointer;
+        font-size: 18px;
+        line-height: 24px;
+        text-align: center;
+        padding: 16px 0;
+        color: $color_off_white_1;
+        background-color: #37475A;
+        border-bottom: 1px solid $color_off_white_1;
+    }
+    .menu_link {
+        .link_section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid #3a4553;
+            .link {
+                cursor: pointer;
+                font-size: 18px;
+                line-height: 24px;
+                margin-bottom: 8px;
+                color: $color_off_white_1;
+                @include breakpoint(sm) {
+                    margin-bottom: 0;
+                    margin-right: 16px;
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+                &::last-child {
+                    margin-bottom: 0;
+                }
+            }
+            @include breakpoint(sm) {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+        .last_section {
+            text-align: center;
+            padding-top: 16px;
+            color: $color_off_white_1;
+            img {
+                width: 54px;
+                height: 24px;
+            }
+            .txt {
+                font-size: 12px;
+                line-height: 18px;
+                padding: 8px 0;
+            }
+        }
+    }
+}

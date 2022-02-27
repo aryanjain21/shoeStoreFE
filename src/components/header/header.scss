@@ -1,8 +1,6 @@
 @import '../../sass/all.scss';
 
 .header_container {
-    // position: fixed;
-    top: 0;
     .header_wrapper {
         height: 50px;
         display: flex;
@@ -10,22 +8,113 @@
         align-items: center;
         padding: 0 24px;
         margin-bottom: 16px;
-        border-bottom: 1px solid $color_black;
+        background-color: $color_off_white_1;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
         .logo {
-
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            .logo_image {
+                width: 56px;
+                height: 24px;
+                img {
+                    width: 100%;
+                    height: 24px;
+                }
+            }
+            .logo_txt {
+                display: none;
+                @include breakpoint(sm) {
+                    display: block;
+                    font-size: 16px;
+                    line-height: 20px;
+                    color: $color_error;
+                }
+            }
         }
         .search_bar {
-            width: 40%;
+            display: none;
             input {
                 width: 100%;
                 height: 33px;
+                padding: 11px 16px;
+                outline: none;
+            }
+            @include breakpoint(sm) {
+                display: block;
+                width: 40%;
             }
         }
         .last_section {
-            width: 20%;
+            width: 40%;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: center;
+            position: relative;
+            .icon {
+                width: 24px;
+                height: 24px;
+                margin-left: 16px;
+                position: relative;
+                cursor: pointer;
+                img {
+                    width: 100%;
+                    height: 24px; 
+                }
+                &.cart_icon {
+                    width: 32px;
+                    height: 32px;
+                    img {
+                        width: 100%;
+                        height: 32px; 
+                    }
+                }
+                .cart_count, .wishlist_count {
+                    font-size: 12px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    position: absolute;
+                    top: 0;
+                    right: 2px;
+                    padding: 2px 4px;
+                    border-radius: 50%;
+                    background-color: orange;
+                }
+                .wishlist_count {
+                    right: -6px;
+                    top: -6px;
+                }
+                @include breakpoint(sm) {
+                    margin-left: 24px;
+                }
+            }
+            .show_menu {
+                position: absolute;
+                top: 44px;
+                right: -25px;
+                z-index: 9;
+                padding: 12px 16px;
+                background-color: $color_off_white_1;
+                .options {
+                    cursor: pointer;
+                    font-size: 14px;
+                    line-height: 14px;
+                    padding-bottom: 8px;
+                    color: $color_border;
+                    margin-bottom: 8px;
+                    border-bottom: 1px solid $color_black;
+                    &:last-child {
+                        padding-bottom: 0;
+                        margin-bottom: 0;
+                        border-bottom: none;
+                    }
+                }
+            }
+            @include breakpoint(sm) {
+                width: 20%;
+            }
         }
     }
 }

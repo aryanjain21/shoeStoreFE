@@ -14,6 +14,8 @@ import Cart from './pages/cart/cart';
 import Product from './pages/product/product';
 import ProductInfo from './pages/product-info/product-info';
 import Wishlist from './pages/wishlist/wishlist';
+import ChangePassword from './pages/change-password/change-password';
+import Footer from './components/footer/footer';
 import { signin } from './redux/user/user-action';
 
 let userInfo = JSON.parse(localStorage.getItem('setUser'));
@@ -25,7 +27,9 @@ function App() {
   return (
     <Provider store={store}>
       <div className='main_container'>
+        <div className='header'>
         <Header />
+        </div>
         <div className='sub_container'>
           <Routes>
             <Route exact path='/' element={<Navigate to='/home' />} />
@@ -49,9 +53,15 @@ function App() {
                 <Wishlist />
               </PrivateRoute>
             } />
+            <Route exact path='change-password' element={
+              <PrivateRoute>
+                <ChangePassword />
+              </PrivateRoute>
+            } />
             <Route exact path='*' element={<Fallback />} />
           </Routes>
         </div>
+        <Footer />
       </div>
     </Provider>
   );

@@ -1,6 +1,21 @@
 @import './sass/all.scss';
 
 .main_container {
+    width: 100%;
+    position: relative;
+    .header {
+        width: 100%;
+        position: fixed;
+        z-index: 9;
+        max-width: 1440px;
+        // @include breakpoint(lg) {
+        //     width: 95%;
+        // }
+    }
+    .sub_container {
+        padding-top: 70px;
+        min-height: 90vh;
+    }
     @include breakpoint(sm) {
         max-width: 1440px;
         margin: 0 auto;

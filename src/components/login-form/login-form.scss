@@ -10,6 +10,8 @@
     @include font_roboto_bold;
   }
   .control_area {
+    padding: 0 32px;
+    margin-left: -32px;
     margin-bottom: 16px;
     .form_control {
       margin-bottom: 24px;
@@ -21,10 +23,11 @@
         @include font_roboto_medium;
       } 
       .form_input {
+        width: 100%;
         position: relative;
         input {
           outline: none;
-          width: 89%;
+          width: 100%;
           height: 36px;
           padding: 0 16px;
           border-radius: 8px;
@@ -38,15 +41,18 @@
           position: absolute;
           top: 0;
           bottom: 0;
-          right: 0;
-          left: 0;
-          margin: 0 auto;
+          right: -16px;
+          // left: 0;
+          // margin: 0 auto;
           margin-top: 10px;
-          margin-right: 16px;
+          // margin-right: 20px;
           img {
             width: 100%;
             height: 20px;
           }
+          // @include breakpoint(sm_phone) {
+          //   margin-right: 40px;
+          // }
         }
       }
       .error {
@@ -58,6 +64,7 @@
       }
     }
     .btn_area {
+      padding-left: 32px;
       text-align: center;
     }
   }

@@ -3,8 +3,13 @@ import * as yup from 'yup';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import Button from '../../common/button/button';
 import { signUp } from '../../services';
+import ShowPassword from '../../assets/icons/open_eye.svg';
+import HidePassword from '../../assets/icons/close_eye.svg';
+import { useState } from 'react';
 
 const SignUpForm = () => {
+
+    const [showPassword, setShowPassword] = useState(false);
 
     const InitialValues = {
         fullName: '',
@@ -65,10 +70,10 @@ const SignUpForm = () => {
                     <div className='form_control'>
                         <div className='label'>Password</div>
                         <div className='form_input'>
-                            <Field /*type={showPassword ? 'text' : 'password'}*/ name='password' placeholder='Password' />
-                            {/* <div className='icon_area' onClick={() => setShowPassword(!showPassword)}>
+                            <Field type={showPassword ? 'text' : 'password'} name='password' placeholder='Password' />
+                            <div className='icon_area' onClick={() => setShowPassword(!showPassword)}>
                                 <img src={showPassword ? ShowPassword : HidePassword} alt='eye' />
-                            </div> */}
+                            </div>
                         </div>
                         <ErrorMessage className='error' name="password" component="div" />
                     </div>

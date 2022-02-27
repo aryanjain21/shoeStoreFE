@@ -1,13 +1,16 @@
 import './product-details.scss';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../common/button/button';
 import { addToCart, addToWishlist } from '../../services';
+import { updateLength } from '../../redux/wishlist/action';
 
 const ProductDetails = (props) => {
 
     const { productInfo } = props;
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleAddToCart = (productId) => {
         addToCart({ productId: productId }).then(resp => {
@@ -15,17 +18,17 @@ const ProductDetails = (props) => {
                 navigate(`/cart`)
             }
         }).catch(error => {
-            console.log('handleAddToCart error>>>>', error);
+            console.error('handleAddToCart error>>>>', error);
         });
     }
 
     const handleAddToWishlist = (productId) => {
         addToWishlist({ productId: productId }).then(resp => {
             if (resp.data.status === 200) {
-                console.log('handleAddToWishlist', resp.data.data)
+                dispatch(updateLength(resp.data.data));
             }
         }).catch(error => {
-            console.log('handleAddToWishlist error>>>>', error);
+            console.error('handleAddToWishlist error>>>>', error);
         });
     }
 

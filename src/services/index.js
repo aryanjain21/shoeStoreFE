@@ -9,7 +9,7 @@ export const login = (data) => {
 }
 
 export const changePassword = (data) => {
-    return axios.post(`${process.env.REACT_APP_BACKEND}/api/change-password`, data);
+    return axios.put(`${process.env.REACT_APP_BACKEND}api/change-password`, data);
 }
 
 export const getAllAddress = (data) => {

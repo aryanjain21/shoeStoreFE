@@ -4,11 +4,12 @@ import { connect } from 'react-redux';
 import CartView from '../../components/cart-view/cart-view';
 import OrderSummary from '../../components/order-summary/order-summary';
 import { fetchCartList } from '../../redux/cart/action';
+import { fetchWishlist } from '../../redux/wishlist/action';
 import { removeFromCart, moveToWishlist, emptyCart } from '../../services';
 
 const Cart = (props) => {
 
-    const { cartData, fetchCartList } = props;
+    const { cartData, fetchCartList,fetchWishlist } = props;
     let cart = (cartData?.cartList?.products?.length > 0) ? cartData.cartList.products : [];
 
     useEffect(() => {
@@ -29,6 +30,7 @@ const Cart = (props) => {
         moveToWishlist({ productId: productId }).then(resp => {
             if (resp.data.status === 200) {
                 fetchCartList();
+                fetchWishlist();
             }
         }).catch(error => {
             console.error('moveItemToWishlist error>>>', error.response)
@@ -69,7 +71,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchCartList: () => dispatch(fetchCartList())
+        fetchCartList: () => dispatch(fetchCartList()),
+        fetchWishlist: () => dispatch(fetchWishlist())
     }
 }
 

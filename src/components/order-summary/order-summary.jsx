@@ -10,11 +10,13 @@ const OrderSummary = (props) => {
 
     useEffect(() => {
         let totalAfterDiscount = 0;
-        if (amountData && amountData.products.length > 0) {
+        if (amountData?.products?.length) {
             amountData.products.forEach(element => {
                 totalAfterDiscount += ((element._id.price - ((element._id.price * element._id.discount)/100)) * element.qty);
                 setBagTotal(totalAfterDiscount.toFixed(2));
             });
+        } else {
+            setBagTotal(0);
         }
     }, [amountData])
 
@@ -27,7 +29,7 @@ const OrderSummary = (props) => {
                 </div>
                 <div className='amount_section'>
                     <div className='lbl'>Bag Discount</div>
-                    <div className='discount'>- Rs. {(amountData?.cartValue - bagTotal) || 0}</div>
+                    <div className='discount'>- Rs. {amountData?.cartValue ? (amountData?.cartValue - bagTotal).toFixed(2) : 0}</div>
                 </div>
                 <div className='amount_section'>
                     <div className='lbl'>Delivery</div>

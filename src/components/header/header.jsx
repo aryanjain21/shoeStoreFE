@@ -19,8 +19,11 @@ const Header = (props) => {
     const [showMenu, setShowMenu] = useState(false);
 
     useEffect(() => {
-        fetchCartList();
-        fetchWishlist();
+        let userInfo = JSON.parse(localStorage.getItem('setUser'));
+        if (userInfo && userInfo.token) {
+            fetchCartList();
+            fetchWishlist();
+        }
     }, []);
 
     const handleLogin = () => {

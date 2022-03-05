@@ -6,6 +6,7 @@ import { signUp } from '../../services';
 import ShowPassword from '../../assets/icons/open_eye.svg';
 import HidePassword from '../../assets/icons/close_eye.svg';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 const SignUpForm = () => {
 
@@ -48,8 +49,14 @@ const SignUpForm = () => {
                 onSubmit={(values) => {
                     signUp(values).then(resp => {
                         console.log(resp.data)
+                        toast.success(resp.data.message);
+                        setTimeout(() => {
+                            if ('undefined' !== typeof window) {
+                                window.location.href = '/home';
+                            }
+                        }, 500);
                     }).catch((error) => {
-                        console.error(error.response.data.message);
+                        toast.error(error?.response?.data?.message);
                     })
                 }}>
                 <Form className='control_area'>

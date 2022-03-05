@@ -17,6 +17,7 @@ import Wishlist from './pages/wishlist/wishlist';
 import ChangePassword from './pages/change-password/change-password';
 import Footer from './components/footer/footer';
 import { signin } from './redux/user/user-action';
+import Payment from './pages/payment/payment';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -59,6 +60,11 @@ function App() {
             <Route exact path='change-password' element={
               <PrivateRoute>
                 <ChangePassword />
+              </PrivateRoute>
+            } />
+            <Route exact path='payment' element={
+              <PrivateRoute>
+                <Payment />
               </PrivateRoute>
             } />
             <Route exact path='*' element={<Fallback />} />

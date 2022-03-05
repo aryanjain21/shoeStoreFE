@@ -5,6 +5,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 import FillHeart from '../../assets/icons/fill_heart.svg';
 import { moveToCart } from '../../services';
+import { toast } from 'react-toastify';
 
 const ProductCard = (props) => {
 
@@ -23,8 +24,13 @@ const ProductCard = (props) => {
     const handleBtnClick = (id) => {
         if (isWhishlist) {
             moveToCart({productId: id}).then(resp => {
-                fetchWishlist();
-                fetchCartList();
+                if (resp.data.status === 200) {
+                    toast.success(resp.data.message);
+                    fetchWishlist();
+                    fetchCartList();
+                }
+            }).catch(error => {
+                toast.error(error.response.data.message);
             })
         } else {
             navigate(`/buy/${id}`)

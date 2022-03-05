@@ -4,10 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../../common/button/button';
 import { addToCart, addToWishlist } from '../../services';
 import { updateLength } from '../../redux/wishlist/action';
+import { toast } from 'react-toastify';
 
 const ProductDetails = (props) => {
 
-    const { productInfo } = props;
+    const { productInfo, fetchCartList, fetchWishlist } = props;
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -15,20 +16,22 @@ const ProductDetails = (props) => {
     const handleAddToCart = (productId) => {
         addToCart({ productId: productId }).then(resp => {
             if (resp.data.status === 200) {
-                navigate(`/cart`)
+                toast.success(resp.data.message);
+                fetchCartList();
             }
         }).catch(error => {
-            console.error('handleAddToCart error>>>>', error);
+            toast.error(error?.response?.data?.message);
         });
     }
 
     const handleAddToWishlist = (productId) => {
         addToWishlist({ productId: productId }).then(resp => {
             if (resp.data.status === 200) {
+                toast.success(resp.data.message);
                 dispatch(updateLength(resp.data.data));
             }
         }).catch(error => {
-            console.error('handleAddToWishlist error>>>>', error);
+            toast.error(error?.response?.data?.message);
         });
     }
 

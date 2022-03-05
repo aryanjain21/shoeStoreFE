@@ -6,11 +6,13 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProduct } from '../../services';
 import { fetchProductList } from '../../redux/product/action.js';
+import { fetchCartList } from '../../redux/cart/action';
+import { fetchWishlist } from '../../redux/wishlist/action';
 import { useState } from 'react';
 
 const ProductInfo = (props) => {
 
-    const { productData, fetchProductList } = props;
+    const { productData, fetchProductList, fetchCartList, fetchWishlist } = props;
     const param = useParams();
 
     const [productInfo, setProductInfo] = useState({});
@@ -37,7 +39,7 @@ const ProductInfo = (props) => {
     return (
         <div className='product_info_container'>
             <div className='details_section'>
-                <ProductDetails productInfo={productInfo} />
+                <ProductDetails productInfo={productInfo} fetchCartList={fetchCartList} fetchWishlist={fetchWishlist} />
             </div>
             <div className='product_section'>
                 <ProductCard products={productData?.product?.products?.slice(0, 10)} isCarousel />
@@ -55,7 +57,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchProductList: (data) => dispatch(fetchProductList(data))
+        fetchProductList: (data) => dispatch(fetchProductList(data)),
+        fetchWishlist: () => dispatch(fetchWishlist()),
+        fetchCartList: () => dispatch(fetchCartList())
     }
 }
 

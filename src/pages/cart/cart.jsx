@@ -6,6 +6,7 @@ import OrderSummary from '../../components/order-summary/order-summary';
 import { fetchCartList } from '../../redux/cart/action';
 import { fetchWishlist } from '../../redux/wishlist/action';
 import { removeFromCart, moveToWishlist, emptyCart } from '../../services';
+import { toast } from 'react-toastify';
 
 const Cart = (props) => {
 
@@ -19,9 +20,11 @@ const Cart = (props) => {
     const removeItem = (productId) => {
         removeFromCart({ productId: productId }).then(resp => {
             if (resp.data.status === 200) {
+                toast.success(resp.data.message);
                 fetchCartList();
             }
         }).catch(error => {
+            toast.error(error?.response?.data?.message);
             console.error('removeItem error>>>', error.response)
         });
     }
@@ -29,10 +32,12 @@ const Cart = (props) => {
     const moveItemToWishlist = (productId) => {
         moveToWishlist({ productId: productId }).then(resp => {
             if (resp.data.status === 200) {
+                toast.success(resp.data.message);
                 fetchCartList();
                 fetchWishlist();
             }
         }).catch(error => {
+            toast.error(error?.response?.data?.message);
             console.error('moveItemToWishlist error>>>', error.response)
         });
     }
@@ -40,10 +45,11 @@ const Cart = (props) => {
     const handleEmptyCart = () => {
         emptyCart().then(resp => {
             if (resp.data.status === 200) {
+                toast.success(resp.data.message);
                 fetchCartList();
             }
         }).catch(error => {
-            console.error('handleEmptyCart error>>>', error.response)
+            toast.error(error?.response?.data?.message);
         });
     }
 

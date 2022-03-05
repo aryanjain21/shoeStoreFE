@@ -75,3 +75,7 @@ export const removeFromWishlist = (data) => {
 export const moveToCart = (data) => {
     return axios.post(`${process.env.REACT_APP_BACKEND}api/move-to-cart`, data);
 }
+
+export const payment = (data) => {
+    return axios.post(`${process.env.REACT_APP_BACKEND}api/payment`, data);
+}

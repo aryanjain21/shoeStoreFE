@@ -46,12 +46,9 @@ const ChangePasswordForm = () => {
                 initialValues={InitialValues}
                 validationSchema={ValidationSchema}
                 onSubmit={(values) => {
-                    console.log(values)
                     changePassword(values).then(resp => {
-                        console.log('resp', resp)
                         if (resp.status === 200) {
                             localStorage.removeItem('setUser');
-                            console.log('resp', resp)
                             window?.location?.reload();
                         }
                     }).catch(error => {

@@ -1,5 +1,6 @@
 import { TYPE } from './type.js';
 import { getWishlist, removeFromWishlist } from '../../services/index.js';
+import { toast } from 'react-toastify';
 
 export const wishlistAction = (wishlist) => {
     return {
@@ -39,6 +40,7 @@ export const removeProduct = (data) => {
         dispatch(setLoader(true));
         removeFromWishlist(data).then(resp => {
             if(resp.data.status === 200) {
+                toast.success(resp.data.message);
                 getWishlist().then(resp => {
                     let wishlist = resp.data.data;
                     dispatch(wishlistAction(wishlist))
@@ -47,6 +49,7 @@ export const removeProduct = (data) => {
                 });
             }
         }).catch(error => {
+            toast.error(error.response.data.message);
             console.error('removeProduct error>>>', error.response);
         }).finally(() => dispatch(setLoader(false)));
     }

@@ -1,0 +1,22 @@
+@import '../../sass/all.scss';
+
+.product_container {
+    padding: 0 16px;
+    .inner_wrapper {
+        display: flex;
+        flex-direction: column;
+        .filter_section {
+            width: 100%;
+            @include breakpoint(sm) {
+                max-width: 300px;
+                margin-right: 24px;
+            }
+        }
+        @include breakpoint(sm) {
+            flex-direction: row;
+        }
+    }
+    @include breakpoint(sm) {
+        padding: 0 32px;
+    }
+}

@@ -88,8 +88,8 @@ const Header = (props) => {
                         <img src={User} alt="user" />
                     </div>
                     {showMenu && <div className='show_menu' onMouseEnter={() => setShowMenu(true)} onMouseLeave={() => setShowMenu(false)}>
-                        <div className='options'>Edit Profile</div>
-                        <div className='options'>My Orders</div>
+                        <div className='options' onClick={() => navigate('/address')}>Address</div>
+                        {/* <div className='options'>Edit Profile</div> */}
                         <div className='options' onClick={() => navigate('/change-password')}>ChangePassword</div>
                         <div className='options' onClick={handleSignOut}>Sign Out</div>
                     </div>}

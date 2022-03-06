@@ -12,6 +12,7 @@ const Wishlist = (props) => {
 
     useEffect(() => {
         fetchWishlist();
+        // eslint-disable-next-line
     }, []);
 
     useEffect(() => {
@@ -20,6 +21,7 @@ const Wishlist = (props) => {
             editedWishlist.push(element._id);
         });
         setWishlistProduct(editedWishlist)
+        // eslint-disable-next-line
     }, [wishlistData?.wishlist?.products?.length]);
 
     return (

@@ -29,12 +29,14 @@ const Header = (props) => {
             fetchCartList();
             fetchWishlist();
         }
+        // eslint-disable-next-line
     }, []);
 
     useEffect(() => {
         if (value) {
             fetchProductList({search: value})
         }
+        // eslint-disable-next-line
     }, [value])
 
     const handleLogin = () => {

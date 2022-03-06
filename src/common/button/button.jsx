@@ -6,8 +6,8 @@ const Button = (props) => {
 
   const {
     type,
-    color,
-    background,
+    // color,
+    // background,
     children,
     redirectionLink,
     disabled,

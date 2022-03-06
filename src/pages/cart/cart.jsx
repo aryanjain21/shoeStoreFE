@@ -15,6 +15,7 @@ const Cart = (props) => {
 
     useEffect(() => {
         fetchCartList();
+        // eslint-disable-next-line
     }, []);
 
     const removeItem = (productId) => {

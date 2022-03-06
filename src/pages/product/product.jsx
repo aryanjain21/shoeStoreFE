@@ -28,6 +28,7 @@ const Product = (props) => {
         if ('undefined' === typeof productData?.product?.products || productData?.product?.products?.length === 0) {
             fetchProductList();
         }
+        // eslint-disable-next-line
     }, [])
 
     return (

@@ -1,6 +1,5 @@
 import './product-details.scss';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import Button from '../../common/button/button';
 import { addToCart, addToWishlist } from '../../services';
 import { updateLength } from '../../redux/wishlist/action';
@@ -8,9 +7,8 @@ import { toast } from 'react-toastify';
 
 const ProductDetails = (props) => {
 
-    const { productInfo, fetchCartList, fetchWishlist } = props;
+    const { productInfo, fetchCartList } = props;
 
-    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const handleAddToCart = (productId) => {
@@ -38,7 +36,7 @@ const ProductDetails = (props) => {
     return (
         <div className='product_details_container'>
             <div className='product_image'>
-                <img src={productInfo.image} alt="product image" />
+                <img src={productInfo.image} alt="product" />
             </div>
             <div className='product_info'>
                 <div className='title'>{productInfo.brand} - {productInfo.title}</div>

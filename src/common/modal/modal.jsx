@@ -1,6 +1,5 @@
 import './modal.scss';
 import Close from '../../assets/icons/close.svg';
-import { useState } from 'react';
 
 const Modal = (props) => {
 

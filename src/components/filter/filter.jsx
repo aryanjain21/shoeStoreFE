@@ -57,7 +57,7 @@ const Filter = (props) => {
             setFilter(value);
             setPriceVal(price);
             setPriceRadio(true);
-        } else if (priceRadio && filter.price != price) {
+        } else if (priceRadio && filter.price !== price) {
             setFilter(value);
             setPriceVal(price);
         }
@@ -74,7 +74,7 @@ const Filter = (props) => {
         if (!radio) {
             setFilter(value);
             setRadio(true);
-        } else if (radio && filter.size != size) {
+        } else if (radio && filter.size !== size) {
             setFilter(value);
         }
         getFilterProducts(value);

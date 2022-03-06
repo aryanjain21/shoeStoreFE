@@ -13,7 +13,7 @@ const CartView = (props) => {
                 return <div className='cart_details_section' key={index}>
                     <div className='product_details'>
                         <div className='product_image'>
-                            <img src={cart._id.image} alt="image" />
+                            <img src={cart._id.image} alt="product" />
                         </div>
                         <div className='details'>
                             <div className='title'>{cart._id.brand}-{cart._id.title}</div>

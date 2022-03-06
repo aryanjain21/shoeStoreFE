@@ -1,11 +1,8 @@
-import { useEffect, useState } from 'react'
 import StripeCheckout from 'react-stripe-checkout';
-import { useNavigate } from "react-router-dom"
-import { Formik, Field, Form } from 'formik';
+import { Formik, Form } from 'formik';
 import { payment } from '../../services';
 
 const Payment = () => {
-    const navigate = useNavigate()
    
     const checkout = async (token) => {
         let obj = {

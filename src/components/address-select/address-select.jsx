@@ -19,7 +19,7 @@ const AddressSelect = (props) => {
         if(!checked) {
             setSelectedAddress(item);
             setChecked(true);
-        } else if(checked && selectedAddress != item) {
+        } else if(checked && selectedAddress !== item) {
             setSelectedAddress(item);
         }
     }
@@ -31,7 +31,7 @@ const AddressSelect = (props) => {
     return (
         <div className='address_select_container'>
             {addressData.addressList.map((address, index) => (<div className='inner_wrapper' key={index}>
-                <img src={(checked && selectedAddress==address._id) ? Checked : Unchecked} alt="radio" 
+                <img src={(checked && selectedAddress===address._id) ? Checked : Unchecked} alt="radio" 
                 onClick={() => handleRadioBtn(address._id)} />
                 <div className='address_list_container'>
                     <div className='top_section'>

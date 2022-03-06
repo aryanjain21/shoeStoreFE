@@ -8,7 +8,7 @@ import { fetchAddressList } from '../../redux/address/action';
 
 const Address = (props) => {
 
-    const { addressData, loader, fetchAddressList } = props;
+    const { fetchAddressList } = props;
 
     const [addressModal, setAddressModal] = useState(false);
     const [editAddress, setEditAddress] = useState(false);
@@ -28,6 +28,7 @@ const Address = (props) => {
 
     useEffect(() => {
         fetchAddressList();
+        // eslint-disable-next-line
     }, []);
     
 

@@ -36,11 +36,13 @@ const Home = (props) => {
                 setProductDataList(homeProduct);
             });
         }
+        // eslint-disable-next-line
     }, [productData])
 
 
     useEffect(() => {
         fetchProductList();
+        // eslint-disable-next-line
     }, []);
 
     return (

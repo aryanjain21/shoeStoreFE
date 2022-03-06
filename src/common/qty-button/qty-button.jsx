@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import './qty-button.scss';
 import { connect } from 'react-redux';
-import { updateQty } from '../../services';
 import { fetchCartList, updateProductQty } from '../../redux/cart/action';
 import { toast } from 'react-toastify';
 
 const QtyButton = (props) => {
 
-    const { qty=1, productId, fetchCartList, updateProductQty } = props;
+    const { qty=1, productId, updateProductQty } = props;
     const [productQty, setProductQty] = useState(qty);
 
     const handleQtyBtn = (qty, btnFlag) => {

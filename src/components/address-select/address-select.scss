@@ -1,0 +1,29 @@
+@import '../../sass/all.scss';
+
+.address_select_container {
+    .info_txt {
+        text-align: center;
+        font-size: 16px;
+        line-height: 20px;
+        color: $color_border;
+        margin-bottom: 16px;
+        span {
+            cursor: pointer;
+            color: $color_yellow;
+        }
+    }
+    .inner_wrapper {
+        display: flex;
+        align-items: center;
+        img {
+            width: 24px;
+            height: 24px;
+        }
+        .address_list_container {
+            margin-left: 16px;
+        }
+    }
+    .btn_area {
+        margin-bottom: 24px;
+    }
+}

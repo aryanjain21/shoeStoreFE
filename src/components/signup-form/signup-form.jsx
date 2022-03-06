@@ -48,7 +48,6 @@ const SignUpForm = () => {
                 validationSchema={ValidationSchema}
                 onSubmit={(values) => {
                     signUp(values).then(resp => {
-                        console.log(resp.data)
                         toast.success(resp.data.message);
                         setTimeout(() => {
                             if ('undefined' !== typeof window) {

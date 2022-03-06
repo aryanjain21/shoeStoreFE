@@ -5,6 +5,9 @@
     .details_section {
         margin-bottom: 16px;
     }
+    .product_section {
+        height: 400px;
+    }
     @include breakpoint(sm_phone) {
         padding: 0 16px;
     }

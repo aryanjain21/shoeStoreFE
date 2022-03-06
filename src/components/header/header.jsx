@@ -1,22 +1,27 @@
 import React, { useEffect } from 'react';
 import './header.scss';
 import { connect } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Wishlist from '../../assets/icons/heart.svg';
 import Cart from '../../assets/icons/cart.svg';
 import User from '../../assets/icons/user.svg';
 import Logo from '../../assets/images/logo.jpg';
 import { fetchCartList } from '../../redux/cart/action';
 import { fetchWishlist } from '../../redux/wishlist/action';
+import {fetchProductList} from '../../redux/product/action';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 
 const Header = (props) => {
 
-    const { cartData, wishlistData, fetchCartList, fetchWishlist } = props;
+    const { cartData, wishlistData, fetchCartList, fetchWishlist, fetchProductList } = props;
 
     const navigate = useNavigate();
     const [showMenu, setShowMenu] = useState(false);
+    const [search, setSearch] = useState('');
+
+    const searchItem = useLocation().search;
+    const value = new URLSearchParams(searchItem).get('search');
 
     useEffect(() => {
         let userInfo = JSON.parse(localStorage.getItem('setUser'));
@@ -25,6 +30,12 @@ const Header = (props) => {
             fetchWishlist();
         }
     }, []);
+
+    useEffect(() => {
+        if (value) {
+            fetchProductList({search: value})
+        }
+    }, [value])
 
     const handleLogin = () => {
         let userInfo = JSON.parse(localStorage.getItem('setUser'));
@@ -44,6 +55,12 @@ const Header = (props) => {
         }, 100);
     }
 
+    const handleSearch = (e) => {
+        if(e.keyCode === 13) {
+            navigate(`/product?search=${search}`);
+        }
+    }
+
     return (
         <div className='header_container'>
             <div className='header_wrapper'>
@@ -56,7 +73,7 @@ const Header = (props) => {
                     </div>
                 </div>
                 <div className='search_bar'>
-                    <input type="search" placeholder='Search your product...' />
+                    <input type="search" value={search} onKeyUp={(e) => handleSearch(e)} onChange={(e) => setSearch(e?.target?.value)} placeholder='Search your product by name or brand' />
                 </div>
                 <div className='last_section'>
                     <div className='icon wishlist_icon' onClick={() => navigate('/wishlist')}>
@@ -92,7 +109,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         fetchCartList: () => dispatch(fetchCartList()),
-        fetchWishlist: () => dispatch(fetchWishlist())
+        fetchWishlist: () => dispatch(fetchWishlist()),
+        fetchProductList: (data) => dispatch(fetchProductList(data))
     }
 }
 

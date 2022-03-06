@@ -1,5 +1,6 @@
 import { TYPE } from './type.js';
 import { getCart, updateQty } from '../../services/index.js';
+import { toast } from 'react-toastify';
 
 export const cartList = (cart) => {
     return {
@@ -32,8 +33,11 @@ export const updateProductQty = (data) => {
         dispatch(setLoader(true));
         updateQty(data).then(resp => {
             if(resp.data.status === 200) {
+                toast.success(resp.data.message);
+                dispatch(cartList(resp.data.data));
             }
         }).catch(error => {
+            toast.error(error.response.data.message);
             console.error('updateProductQty error>>>', error.response);
         }).finally(() => dispatch(setLoader(false)));
     }

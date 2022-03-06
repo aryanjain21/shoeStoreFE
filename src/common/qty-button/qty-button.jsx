@@ -2,12 +2,12 @@ import { useState } from 'react';
 import './qty-button.scss';
 import { connect } from 'react-redux';
 import { updateQty } from '../../services';
-import { fetchCartList } from '../../redux/cart/action';
+import { fetchCartList, updateProductQty } from '../../redux/cart/action';
 import { toast } from 'react-toastify';
 
 const QtyButton = (props) => {
 
-    const { qty=1, productId, fetchCartList } = props;
+    const { qty=1, productId, fetchCartList, updateProductQty } = props;
     const [productQty, setProductQty] = useState(qty);
 
     const handleQtyBtn = (qty, btnFlag) => {
@@ -23,15 +23,7 @@ const QtyButton = (props) => {
             }
         }
         setProductQty(newQty);
-        updateQty({productId: productId, qty: newQty}).then(resp => {
-            if(resp.data.status === 200) {
-                toast.success(resp.data.message);
-                fetchCartList();
-            }
-        }).catch(error => {
-            toast.error(error.response.data.message);
-            console.error('updateQty error>>>', error.response)
-        });
+        updateProductQty({productId: productId, qty: newQty});
     }
 
     return (
@@ -47,7 +39,8 @@ const QtyButton = (props) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchCartList: () => dispatch(fetchCartList()) 
+        fetchCartList: () => dispatch(fetchCartList()),
+        updateProductQty: (data) => dispatch(updateProductQty(data))
     }
 }
 

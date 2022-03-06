@@ -2,11 +2,20 @@ import './order-summary.scss';
 import Button from '../../common/button/button';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import Modal from '../../common/modal/modal';
+import AddressSelect from '../address-select/address-select';
+import { addressList } from '../../redux/address/action';
+import { getAllAddress } from '../../services';
 
 const OrderSummary = (props) => {
 
     const {amountData} = props;
+
+    const dispatch = useDispatch();
+
     const [bagTotal, setBagTotal] = useState(0);
+    const [addressModal, setAddressModal] = useState(false);
 
     useEffect(() => {
         let totalAfterDiscount = 0;
@@ -18,7 +27,19 @@ const OrderSummary = (props) => {
         } else {
             setBagTotal(0);
         }
-    }, [amountData])
+    }, [amountData]);
+
+    const fetchAddressList = () => {
+        getAllAddress().then(resp => {
+            let list = resp.data.data;
+            dispatch(addressList(list));
+            setAddressModal(true);
+            localStorage.setItem('setAmount', JSON.stringify({ cartAmount: amountData?.cartValue, total: bagTotal }));
+        }).catch(error => {
+            setAddressModal(false)
+            console.error('fetchAddressList error>>>', error.response);
+        })
+    }
 
     return (
         <div className='order_summary_container'>
@@ -43,10 +64,13 @@ const OrderSummary = (props) => {
                 </div>
             </div>
             <div className='btn_area'>
-                <Button>
+                <Button clickHandler={fetchAddressList}>
                     Checkout Now
                 </Button>
             </div>
+            <Modal showModal={addressModal} title={'Select Address'} closeHandler={() => setAddressModal(false)}>
+                <AddressSelect />
+            </Modal>
         </div>
     );
 };

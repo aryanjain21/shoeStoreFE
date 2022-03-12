@@ -7,10 +7,12 @@ import { fetchCartList } from '../../redux/cart/action';
 import { fetchWishlist } from '../../redux/wishlist/action';
 import { removeFromCart, moveToWishlist, emptyCart } from '../../services';
 import { toast } from 'react-toastify';
+import Loader from '../../assets/icons/loader.gif';
+import EmptyCart from '../../assets/images/empty_cart.png';
 
 const Cart = (props) => {
 
-    const { cartData, fetchCartList,fetchWishlist } = props;
+    const { cartData, fetchCartList, fetchWishlist } = props;
     let cart = (cartData?.cartList?.products?.length > 0) ? cartData.cartList.products : [];
 
     useEffect(() => {
@@ -56,15 +58,31 @@ const Cart = (props) => {
 
     return (
         <div className='cart_section'>
-            <div className='cart_view'>
-                {(cart.length > 0) && <div className='link'>
-                    <a href='javascrip:void(0);' onClick={handleEmptyCart}>Empty Cart</a>
-                </div>}
-                <CartView cartData={cart} removeItem={removeItem} moveItemToWishlist={moveItemToWishlist} />
-            </div>
-            <div className='order_summary'>
-                <OrderSummary amountData={cartData?.cartList?.products?.length > 0 ? cartData.cartList : {}} />
-            </div>
+            {cartData.loader ?
+                <div className='loader'>
+                    <img src={Loader} alt="Loading..." />
+                </div>
+                :
+                <>
+                    {(cart.length > 0) ?
+                        <>
+                            <div className='cart_view'>
+                                <div className='link'>
+                                    <a href='javascrip:void(0);' onClick={handleEmptyCart}>Empty Cart</a>
+                                </div>
+                                <CartView cartData={cart} removeItem={removeItem} moveItemToWishlist={moveItemToWishlist} />
+                            </div>
+                            <div className='order_summary'>
+                                <OrderSummary amountData={cartData?.cartList?.products?.length > 0 ? cartData.cartList : {}} />
+                            </div>
+                        </>
+                        :
+                        <div className='empty_cart'>
+                            <img src={EmptyCart} alt='Empty Cart' />
+                            <div className='info_txt'>Your cart is empty.</div>
+                        </div>
+                    }
+                </>}
         </div>
     );
 };

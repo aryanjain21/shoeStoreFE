@@ -8,7 +8,11 @@ const Footer = () => {
 
     return (
         <div className='footer_container'>
-            <div className='top_scroll' onClick={() => window?.scrollTo(0, 0)}>
+            <div className='top_scroll' onClick={() => window?.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+            })}>
                 Back to top
             </div>
             <div className='menu_link'>

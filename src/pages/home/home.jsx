@@ -12,6 +12,7 @@ import MenFootwear from '../../assets/images/men_footwear.webp';
 import WomenFootwear from '../../assets/images/women_footwear.png';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Loader from '../../assets/icons/loader.gif';
 
 const Home = (props) => {
 
@@ -78,7 +79,13 @@ const Home = (props) => {
                 <div className='link_section'>
                     <span className='link' onClick={() => navigate(`/product`)}>View All</span>
                 </div>
-                <ProductCard hidebtn={true} products={productDataList.length ? productDataList : []} />
+                {productData.loader ?
+                    <div className='loader'>
+                        <img src={Loader} alt="Loading..." />
+                    </div>
+                    :
+                    <ProductCard hidebtn={true} products={productDataList.length ? productDataList : []} />
+                }
             </div>
         </div>
     )

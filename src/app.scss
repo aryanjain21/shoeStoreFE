@@ -6,7 +6,7 @@
     .header {
         width: 100%;
         position: fixed;
-        z-index: 9;
+        z-index: 10;
         max-width: 1440px;
         // @include breakpoint(lg) {
         //     width: 95%;
@@ -15,6 +15,13 @@
     .sub_container {
         padding-top: 70px;
         min-height: 90vh;
+        .loader {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     }
     @include breakpoint(sm) {
         max-width: 1440px;

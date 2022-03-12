@@ -4,10 +4,11 @@ import ProductCard from '../../common/product-card/product-card';
 import Filter from '../../components/filter/filter';
 import { fetchProductList } from '../../redux/product/action';
 import { useEffect } from 'react';
+import Loader from '../../assets/icons/loader.gif';
 
 const Product = (props) => {
 
-    const { productData, fetchProductList } = props;
+    const { productData, fetchProductList, loader } = props;
 
     const filterOption = [
         {
@@ -25,6 +26,7 @@ const Product = (props) => {
     ]
 
     useEffect(() => {
+        window?.scrollTo(0, 0);
         if ('undefined' === typeof productData?.product?.products || productData?.product?.products?.length === 0) {
             fetchProductList();
         }
@@ -37,9 +39,13 @@ const Product = (props) => {
                 <div className='filter_section'>
                     <Filter filterOption={filterOption} fetchProductList={fetchProductList} />
                 </div>
-                <div>
+                {productData.loader ?
+                    <div className='loader'>
+                        <img src={Loader} alt="Loading..." />
+                    </div>
+                    :
                     <ProductCard products={productData?.product?.products} />
-                </div>
+                }
             </div>
         </div>
     );

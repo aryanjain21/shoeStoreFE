@@ -41,7 +41,11 @@ function App() {
             <Route exact path='login' element={<Login />} />
             <Route exact path='signup' element={<SignUp />} />
             <Route exact path='/product' element={<Product />} />
-            <Route exact path='/buy/:productId' element={<ProductInfo />} />
+            <Route exact path='/buy/:productId' element={
+              <PrivateRoute>
+                <ProductInfo />
+              </PrivateRoute>
+            } />
             <Route exact path='/address' element={
               <PrivateRoute>
                 <Address />

@@ -8,7 +8,7 @@ import Loader from '../../assets/icons/loader.gif';
 
 const Wishlist = (props) => {
 
-    const { wishlistData, fetchWishlist, removeProduct, fetchCartList, loader } = props;
+    const { wishlistData, fetchWishlist, removeProduct, fetchCartList } = props;
     const [wishlistProduct, setWishlistProduct] = useState([]);
 
     useEffect(() => {

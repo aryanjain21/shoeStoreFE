@@ -8,7 +8,7 @@ import Loader from '../../assets/icons/loader.gif';
 
 const Product = (props) => {
 
-    const { productData, fetchProductList, loader } = props;
+    const { productData, fetchProductList } = props;
 
     const filterOption = [
         {

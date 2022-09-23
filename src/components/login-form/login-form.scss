@@ -2,6 +2,7 @@
 
 .login_form_container{
   padding: 0 32px;
+  position: relative;
   .title {
     font-size: 24px;
     line-height: 24px;
@@ -70,6 +71,13 @@
   }
   .account_link {
     text-align: center;
+  }
+  .auth_loader {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
   @include breakpoint(sm) {
     width: 25%;

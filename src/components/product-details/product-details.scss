@@ -74,17 +74,25 @@
             color: $color_light_gray;
         }
         .btn_area {
+            width: 100%;
             display: flex;
             padding-top: 24px;
             .btn_section {
+                width: 100%;
                 margin-right: 8px;
+                Button {
+                    padding: 11px 20px;
+                }
                 &:last-child {
                     margin-right: 0;
                 }
             }
         }
+        @include breakpoint(sm) {
+            margin-top: 16px;
+        }
     }
-    @include breakpoint(sm) {
+    @include breakpoint(md) {
         flex-direction: row;
     }
 }

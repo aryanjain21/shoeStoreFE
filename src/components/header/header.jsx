@@ -75,7 +75,7 @@ const Header = (props) => {
                     </div>
                 </div>
                 <div className='search_bar'>
-                    <input type="search" value={search} onKeyUp={(e) => handleSearch(e)} onChange={(e) => setSearch(e?.target?.value)} placeholder='Search your product by name or brand' />
+                    <input type="search" value={search} onKeyUp={(e) => handleSearch(e)} onChange={(e) => setSearch(e?.target?.value)} placeholder='Search your product by name or brand & hit enter' />
                 </div>
                 <div className='last_section'>
                     <div className='icon wishlist_icon' onClick={() => navigate('/wishlist')}>

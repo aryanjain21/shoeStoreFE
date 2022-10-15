@@ -20,6 +20,7 @@ import { signin } from './redux/user/user-action';
 import Payment from './pages/payment/payment';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import OrderConfirmation from './pages/orderConfirmation/orderConfirmation';
 
 let userInfo = JSON.parse(localStorage.getItem('setUser'));
 if (userInfo && userInfo.token) {
@@ -69,6 +70,11 @@ function App() {
             <Route exact path='payment' element={
               <PrivateRoute>
                 <Payment />
+              </PrivateRoute>
+            } />
+            <Route exact path='/order-status/:orderId' element={
+              <PrivateRoute>
+                <OrderConfirmation />
               </PrivateRoute>
             } />
             <Route exact path='*' element={<Fallback />} />

@@ -28,6 +28,7 @@ const AddressForm = (props) => {
             .string()
             .trim()
             .required('Please enter mobile number')
+            .max(10, 'Please enter valid mobile number')
             .matches(
                 /^[0]?[789]\d{9}$/,
                 'Please enter valid mobile number'

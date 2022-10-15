@@ -79,3 +79,11 @@ export const moveToCart = (data) => {
 export const payment = (data) => {
     return axios.post(`${process.env.REACT_APP_BACKEND}api/payment`, data);
 }
+
+export const getAllOrders = (data) => {
+    return axios.post(`${process.env.REACT_APP_BACKEND}api/orders`, data);
+}
+
+export const getOrder = (data) => {
+    return axios.post(`${process.env.REACT_APP_BACKEND}api/order`, data);
+}

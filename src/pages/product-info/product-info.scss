@@ -2,7 +2,7 @@
 
 .product_info_container {
     padding: 0 8px;
-    height: 90vh;
+    height: 100vh;
     .details_section {
         margin-bottom: 16px;
     }
@@ -11,5 +11,8 @@
     }
     @include breakpoint(sm_phone) {
         padding: 0 16px;
+    }
+    @include breakpoint(md) {
+        height: 90vh;
     }
 }

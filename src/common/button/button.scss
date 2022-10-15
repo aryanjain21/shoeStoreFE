@@ -1,15 +1,17 @@
 @import '../../sass/all.scss';
 
 .button {
-    padding: $semi_half_spacing $half_spacing * 4;
+    width: 100%;
     font-size: 14px;
-    line-height: 14px;
+    line-height: 16px;
     text-align: center;
     color: $color_white;
+    margin: 0;
+    padding: $semi_half_spacing $half_spacing * 4;
     background-color: $color_black;
     border: none;
     border-radius: 10px;
-    text-transform: uppercase;
+    text-transform: capitalize;
     &.disabled_btn {
         pointer-events: none;
     }

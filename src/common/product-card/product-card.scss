@@ -7,6 +7,27 @@
     li[class*="slide"] {
         min-width: auto;
     }
+    .total_product {
+        width: 100%;
+        font-size: 18px;
+        line-height: 24px;
+        color: black;
+        // text-align: end;
+        margin-bottom: 24px;
+        span {
+            font-weight: 700;
+            color: green;
+        }
+    }
+    .no_product {
+        height: 20px;
+        font-size: 16px;
+        line-height: 20px;
+        padding: 12px;
+        color: orangered;
+        background-color: lightcyan;
+        border-radius: 12px;
+    }
     .product_wrapper {
         width: 220px;
         height: 340px;

@@ -22,7 +22,7 @@ const OrderConfirmation = (props) => {
     <div className="order_confirmation_container">
       {!orderData.loader ? (
         <div className="order_confirmation_wrapper">
-          <div className="title">Congratulatios!!</div>
+          <div className="title">Congratulations!!</div>
           <div className="sub_title">Order Placed Successfully!!</div>
           <div className="order_details_section">
             <div className="details_title">Order Details</div>

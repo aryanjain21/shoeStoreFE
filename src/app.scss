@@ -28,3 +28,13 @@
         margin: 0 auto;
     }
 }
+
+.Toastify__close-button {
+    width: auto;
+    height: auto;
+    position: absolute;
+    right: 0;
+    top: -32px;
+    padding: 0;
+    background-color: transparent;
+}

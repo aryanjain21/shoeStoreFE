@@ -6,6 +6,7 @@ import ShowPassword from '../../assets/icons/open_eye.svg';
 import HidePassword from '../../assets/icons/close_eye.svg';
 import Button from '../../common/button/button';
 import { changePassword } from '../../services';
+import { toast } from "react-toastify";
 
 const ChangePasswordForm = () => {
 
@@ -48,11 +49,14 @@ const ChangePasswordForm = () => {
                 onSubmit={(values) => {
                     changePassword(values).then(resp => {
                         if (resp.status === 200) {
+                            toast.success(resp.data.message);
                             localStorage.removeItem('setUser');
-                            window?.location?.reload();
+                            setTimeout(() => {
+                                window?.location?.reload();
+                            }, 1500);
                         }
-                    }).catch(error => {
-                        console.error('changePassword error>>>', error.response);
+                    }).catch((error) => {
+                        toast.error(error?.response?.data?.message);
                     });
                 }}
             >

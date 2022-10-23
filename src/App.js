@@ -34,7 +34,18 @@ function App() {
         <div className='header'>
         <Header />
         </div>
-        <ToastContainer />
+        <ToastContainer
+          position="bottom-left"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
         <div className='sub_container'>
           <Routes>
             <Route exact path='/' element={<Navigate to='/home' />} />

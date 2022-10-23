@@ -44,7 +44,7 @@ const Product = (props) => {
                         <img src={Loader} alt="Loading..." />
                     </div>
                     :
-                    <ProductCard products={productData?.product?.products} />
+                    <ProductCard pageName={'PRODUCT'} products={productData?.product?.products} />
                 }
             </div>
         </div>

@@ -26,18 +26,20 @@ export const fetchUserDetails = (data) => {
     return (dispatch) => {
         dispatch(setLoader(true));
         login(data).then(resp => {
-            toast.success(resp.data.message);
-            let user = resp.data.data;
-            dispatch(signin(user));
-            setTimeout(() => {
-                if ('undefined' !== typeof window) {
-                    window.location.href = '/home';
-                }
-            }, 500);
-            localStorage.setItem('setUser', JSON.stringify({ fullName: user.fullName, email: user.email, token: user.token, id: user._id }));
+            if (resp && resp.data) {
+                toast.success(resp.data.message);
+                let user = resp.data.data;
+                dispatch(signin(user));
+                setTimeout(() => {
+                    if ('undefined' !== typeof window) {
+                        window.location.href = '/home';
+                    }
+                }, 500);
+                localStorage.setItem('setUser', JSON.stringify({ fullName: user.fullName, email: user.email, token: user.token, id: user._id }));
+            }
         }).catch(error => {
             toast.error(error?.response?.data?.message);
-            console.error('fetchUserDetails error>>>', error.response);
+            console.error('fetchUserDetails error>>>', error);
         }).finally(() => dispatch(setLoader(false)));
     }
 }

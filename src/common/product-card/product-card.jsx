@@ -17,13 +17,14 @@ const ProductCard = (props) => {
     removeProduct,
     fetchWishlist,
     fetchCartList,
+    pageName
   } = props;
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleNavigation = (id) => {
-    if (isWhishlist) {
+    if (isWhishlist || pageName === 'PRODUCT') {
       navigate(`/buy/${id}`);
     } else {
       navigate(`/product`);
@@ -125,7 +126,7 @@ const ProductCard = (props) => {
         })
       ) : products.length > 0 ? (
         <>
-        <div className="total_product">Total Available Product: <span>{products.length}</span></div>
+        {pageName !== 'HOME' && <div className="total_product">Total Available Product: <span>{products.length}</span></div>}
         {products.map((product, index) => (
           <div
             className={`product_wrapper ${

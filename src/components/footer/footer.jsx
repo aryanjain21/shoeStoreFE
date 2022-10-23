@@ -1,8 +1,9 @@
 import './footer.scss';
+import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../../assets/images/logo.jpg';
 
-const Footer = () => {
+const Footer = ({ userData }) => {
 
     const navigate = useNavigate();
 
@@ -18,10 +19,10 @@ const Footer = () => {
             <div className='menu_link'>
                 <div className='link_section'>
                     <div className='link' onClick={() => navigate('/home')}>Home</div>
-                    <div className='link' onClick={() => navigate('/cart')}>Cart</div>
-                    <div className='link' onClick={() => navigate('/change-password')}>Change Password</div>
+                    {userData && userData.user && userData.user.token && <div className='link' onClick={() => navigate('/cart')}>Cart</div>}
+                    {userData && userData.user && userData.user.token && <div className='link' onClick={() => navigate('/change-password')}>Change Password</div>}
                     <div className='link' onClick={() => navigate('/product')}>Product</div>
-                    <div className='link' onClick={() => navigate('/wishlist')}>Wishlist</div>
+                    {userData && userData.user && userData.user.token &&<div className='link' onClick={() => navigate('/wishlist')}>Wishlist</div>}
                 </div>
                 <div className='last_section'>
                     <img src={Logo} alt="Nice Pair" />
@@ -32,4 +33,10 @@ const Footer = () => {
     );
 };
 
-export default Footer;
+const mapStateToProps = state => {
+    return {
+        userData: state.user,
+    }
+}
+
+export default connect(mapStateToProps)(Footer);

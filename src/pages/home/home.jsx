@@ -48,7 +48,7 @@ const Home = (props) => {
 
     return (
         <div className='home_container'>
-            <Carousel infiniteLoop autoPlay>
+            <Carousel infiniteLoop autoPlay showThumbs={false} showArrows={false}>
                 <div className='banner_section'>
                     <img src={Banner_1} alt="banner 1" />
                 </div>
@@ -84,7 +84,7 @@ const Home = (props) => {
                         <img src={Loader} alt="Loading..." />
                     </div>
                     :
-                    <ProductCard hidebtn={true} products={productDataList.length ? productDataList : []} />
+                    <ProductCard hidebtn={true} pageName={'HOME'} products={productDataList.length ? productDataList : []} />
                 }
             </div>
         </div>

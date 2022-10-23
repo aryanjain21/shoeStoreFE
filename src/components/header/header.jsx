@@ -6,6 +6,7 @@ import Wishlist from '../../assets/icons/heart.svg';
 import Cart from '../../assets/icons/cart.svg';
 import User from '../../assets/icons/user.svg';
 import Logo from '../../assets/images/logo.jpg';
+import Search from '../../assets/icons/search.svg';
 import { fetchCartList } from '../../redux/cart/action';
 import { fetchWishlist } from '../../redux/wishlist/action';
 import {fetchProductList} from '../../redux/product/action';
@@ -60,6 +61,7 @@ const Header = (props) => {
     const handleSearch = (e) => {
         if(e.keyCode === 13) {
             navigate(`/product?search=${search}`);
+            setSearch('');;
         }
     }
 
@@ -76,6 +78,10 @@ const Header = (props) => {
                 </div>
                 <div className='search_bar'>
                     <input type="search" value={search} onKeyUp={(e) => handleSearch(e)} onChange={(e) => setSearch(e?.target?.value)} placeholder='Search your product by name or brand & hit enter' />
+                    <span onClick={() => {
+                        navigate(`/product?search=${search}`);
+                        setSearch('');
+                    }}><img src={Search} alt="search" /></span>
                 </div>
                 <div className='last_section'>
                     <div className='icon wishlist_icon' onClick={() => navigate('/wishlist')}>
